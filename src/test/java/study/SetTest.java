@@ -27,4 +27,12 @@ public class SetTest {
     void testSize() {
         assertThat(numbers.size()).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("contains 메소드로 값이 존재하지는 확인할 수 있다.")
+    void testContains() {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
+    }
 }
