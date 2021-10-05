@@ -7,8 +7,8 @@ public class Game {
     boolean isFinished;
     Computer computer;
 
-    public Game() {
-        computer = new Computer();
+    public Game(Computer computer) {
+        this.computer = computer;
     }
 
     public boolean isFinished() {

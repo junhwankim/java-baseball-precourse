@@ -1,23 +1,25 @@
 package baseball.controller;
 
+import baseball.domain.Computer;
 import baseball.domain.Game;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    private Game game;
     private InputView inputView;
     private OutputView outputView;
 
     private boolean isGameFinished;
 
     public GameController() {
-        game = new Game();
         inputView = new InputView();
         outputView = new OutputView();
     }
 
     public void run() {
+        Computer computer = new Computer();
+        Game game = new Game(computer);
+
         while(!game.isFinished()) {
             String userNumber = inputView.inputNumber();
             outputView.printMessage(game.checkInputNumber(userNumber));
