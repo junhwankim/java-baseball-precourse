@@ -6,39 +6,42 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-    private InputView inputView;
-    private OutputView outputView;
+	private static final String SELECT_CONTINUE = "1";
+	private static final String SELECT_END = "2";
 
-    public GameController() {
-        inputView = new InputView();
-        outputView = new OutputView();
-    }
+	private final InputView inputView;
+	private final OutputView outputView;
 
-    public void run() {
-        do {
-            playGame();
-        } while (getContinueSelect());
-    }
+	public GameController() {
+		inputView = new InputView();
+		outputView = new OutputView();
+	}
 
-    private boolean getContinueSelect() {
-        String userSelect = inputView.inputContinueOrEnd();
+	public void run() {
+		do {
+			playGame();
+		} while (getContinueSelect());
+	}
 
-        while (!userSelect.equals("1") && !userSelect.equals("2")) {
-            userSelect = inputView.inputContinueOrEnd();
-        }
+	private boolean getContinueSelect() {
+		String userSelect = inputView.inputContinueOrEnd();
 
-        return userSelect.equals("1");
-    }
+		while (!userSelect.equals(SELECT_CONTINUE) && !userSelect.equals(SELECT_END)) {
+			userSelect = inputView.inputContinueOrEnd();
+		}
 
-    private void playGame() {
-        Computer computer = new Computer();
-        Game game = new Game(computer);
+		return userSelect.equals(SELECT_CONTINUE);
+	}
 
-        do {
-            String userNumber = inputView.inputNumber();
-            outputView.printMessage(game.checkInputNumber(userNumber));
-        } while (!game.isFinished());
+	private void playGame() {
+		Computer computer = new Computer();
+		Game game = new Game(computer);
 
-        outputView.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 끝");
-    }
+		do {
+			String userNumber = inputView.inputNumber();
+			outputView.printMessage(game.checkInputNumber(userNumber));
+		} while (!game.isFinished());
+
+		outputView.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 끝");
+	}
 }

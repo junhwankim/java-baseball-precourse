@@ -6,50 +6,52 @@ import java.util.List;
 import java.util.Set;
 
 public class Balls {
-    private final List<Character> ballNumbers;
+	private static final int BALLS_COUNT = 3;
 
-    private Balls(List<Character> numbers) {
-        validateLength(numbers);
-        validateNotStartZero(numbers);
-        validateNonDuplicate(numbers);
+	private final List<Character> ballNumbers;
 
-        ballNumbers = numbers;
-    }
+	private Balls(List<Character> numbers) {
+		validateLength(numbers);
+		validateNotStartZero(numbers);
+		validateNonDuplicate(numbers);
 
-    public static Balls create(String numbers) {
-        List<Character> ballNumbers = new ArrayList<>();
+		ballNumbers = numbers;
+	}
 
-        for (char c : numbers.toCharArray())
-            ballNumbers.add(c);
+	public static Balls create(String numbers) {
+		List<Character> ballNumbers = new ArrayList<>();
 
-        return new Balls(ballNumbers);
-    }
+		for (char c : numbers.toCharArray())
+			ballNumbers.add(c);
 
-    public Character get(int index) {
-        return ballNumbers.get(index);
-    }
+		return new Balls(ballNumbers);
+	}
 
-    public boolean contains(Character digit) {
-        return ballNumbers.contains(digit);
-    }
+	public Character get(int index) {
+		return ballNumbers.get(index);
+	}
 
-    public int size() {
-        return ballNumbers.size();
-    }
+	public boolean contains(Character digit) {
+		return ballNumbers.contains(digit);
+	}
 
-    private void validateLength(List<Character> numbers) {
-        if (numbers.size() != 3)
-            throw new IllegalArgumentException("[ERROR] 서로 다른 3개의 숫자를 입력해주세요.");
-    }
+	public int size() {
+		return ballNumbers.size();
+	}
 
-    private void validateNotStartZero(List<Character> numbers) {
-        if (numbers.get(0) == '0')
-            throw new IllegalArgumentException("[ERROR] 서로 다른 3개의 숫자를 입력해주세요.");
-    }
+	private void validateLength(List<Character> numbers) {
+		if (numbers.size() != BALLS_COUNT)
+			throw new IllegalArgumentException("[ERROR] 서로 다른 3개의 숫자를 입력해주세요.");
+	}
 
-    private void validateNonDuplicate(List<Character> numbers) {
-        Set<Character> nonDuplicateNumbers = new HashSet<>(numbers);
-        if (nonDuplicateNumbers.size() != 3)
-            throw new IllegalArgumentException("[ERROR] 서로 다른 3개의 숫자를 입력해주세요.");
-    }
+	private void validateNotStartZero(List<Character> numbers) {
+		if (numbers.get(0) == '0')
+			throw new IllegalArgumentException("[ERROR] 서로 다른 3개의 숫자를 입력해주세요.");
+	}
+
+	private void validateNonDuplicate(List<Character> numbers) {
+		Set<Character> nonDuplicateNumbers = new HashSet<>(numbers);
+		if (nonDuplicateNumbers.size() != BALLS_COUNT)
+			throw new IllegalArgumentException("[ERROR] 서로 다른 3개의 숫자를 입력해주세요.");
+	}
 }

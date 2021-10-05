@@ -1,36 +1,35 @@
 package baseball.domain;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Game {
-    boolean isFinished;
-    Computer computer;
+	public static final int BALLS_COUNT = 3;
 
-    public Game(Computer computer) {
-        this.computer = computer;
-    }
+	private boolean isFinished;
+	private final Computer computer;
 
-    public boolean isFinished() {
-        return isFinished;
-    }
+	public Game(Computer computer) {
+		this.computer = computer;
+	}
 
-    public String checkInputNumber(String inputNumber) {
-        try {
-            Balls userBalls = Balls.create(inputNumber);
-            Balls computerBalls = Balls.create(computer.getNumbers());
-            BallCount ballCount = BallCount.create(userBalls, computerBalls);
+	public boolean isFinished() {
+		return isFinished;
+	}
 
-            checkGameEnd(ballCount);
-            return ballCount.toString();
-        } catch (IllegalArgumentException e) {
-            return e.getMessage();
-        }
-    }
+	public String checkInputNumber(String inputNumber) {
+		try {
+			Balls userBalls = Balls.create(inputNumber);
+			Balls computerBalls = Balls.create(computer.getNumbers());
+			BallCount ballCount = BallCount.create(userBalls, computerBalls);
 
-    private void checkGameEnd(BallCount ballCount) {
-        if (ballCount.getStrike() == 3) {
-            isFinished = true;
-        }
-    }
+			checkGameEnd(ballCount);
+			return ballCount.toString();
+		} catch (IllegalArgumentException e) {
+			return e.getMessage();
+		}
+	}
+
+	private void checkGameEnd(BallCount ballCount) {
+		if (ballCount.getStrike() == BALLS_COUNT) {
+			isFinished = true;
+		}
+	}
 }
