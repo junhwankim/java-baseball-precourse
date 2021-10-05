@@ -17,7 +17,7 @@ public class GameController {
         outputView = new OutputView();
     }
 
-    public void play() {
+    public void run() {
         while(!game.isFinished()) {
             String userNumber = inputView.inputNumber();
             outputView.printMessage(game.checkInputNumber(userNumber));
