@@ -9,8 +9,6 @@ public class GameController {
     private InputView inputView;
     private OutputView outputView;
 
-    private boolean isGameFinished;
-
     public GameController() {
         inputView = new InputView();
         outputView = new OutputView();
@@ -19,7 +17,7 @@ public class GameController {
     public void run() {
         do {
             playGame();
-        } while(getContinueSelect());
+        } while (getContinueSelect());
     }
 
     private boolean getContinueSelect() {
