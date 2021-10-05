@@ -51,4 +51,11 @@ class BallsTest {
 	void testDuplicateNumberThrowException(String input) {
 		assertThatIllegalArgumentException().isThrownBy(() -> Balls.create(input));
 	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"1a2", "4b5", "9c7"})
+	@DisplayName("숫자로만 구성되어야 한다. 그렇지 않으면 예외를 반환한다.")
+	void testNotAllDigitThrowException(String input) {
+		assertThatIllegalArgumentException().isThrownBy(() -> Balls.create(input));
+	}
 }

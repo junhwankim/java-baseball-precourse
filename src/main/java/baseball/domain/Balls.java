@@ -15,6 +15,7 @@ public class Balls {
 	private Balls(List<Character> numbers) {
 		validateLength(numbers);
 		validateNotStartZero(numbers);
+		validateAllDigit(numbers);
 		validateNonDuplicate(numbers);
 
 		ballNumbers = numbers;
@@ -49,6 +50,17 @@ public class Balls {
 	private void validateNotStartZero(List<Character> numbers) {
 		if (numbers.get(0) == '0')
 			throw new IllegalArgumentException(message.ERROR_INPUT_START_ZERO);
+	}
+
+	private void validateAllDigit(List<Character> numbers) {
+		boolean isAllDigit = true;
+
+		for (Character c : numbers) {
+			isAllDigit &= Character.isDigit(c);
+		}
+
+		if (!isAllDigit)
+			throw new IllegalArgumentException(message.ERROR_INPUT_NOT_ALL_DIGIT);
 	}
 
 	private void validateNonDuplicate(List<Character> numbers) {
