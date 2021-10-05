@@ -5,10 +5,8 @@ import java.util.Set;
 
 public class Game {
     boolean isFinished;
-    InputValidator inputValidator;
 
     public Game() {
-        this.inputValidator = new InputValidator();
     }
 
     public boolean isFinished() {
@@ -17,7 +15,6 @@ public class Game {
 
     public String checkInputNumber(String inputNumber) {
         try {
-            inputValidator.validate(inputNumber);
         } catch (IllegalArgumentException e) {
             return e.getMessage();
         }
