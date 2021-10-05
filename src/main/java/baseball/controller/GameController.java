@@ -19,8 +19,10 @@ public class GameController {
 
     public void play() {
         while(!game.isFinished()) {
-            String inputNumber = inputView.inputNumber();
-            outputView.printMessage(game.checkInputNumber(inputNumber));
+            String userNumber = inputView.inputNumber();
+            outputView.printMessage(game.checkInputNumber(userNumber));
         }
+
+        outputView.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 끝");
     }
 }
