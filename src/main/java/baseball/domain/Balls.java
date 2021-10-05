@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import baseball.config.message;
+
 public class Balls {
 	private static final int BALLS_COUNT = 3;
 
@@ -41,17 +43,17 @@ public class Balls {
 
 	private void validateLength(List<Character> numbers) {
 		if (numbers.size() != BALLS_COUNT)
-			throw new IllegalArgumentException("[ERROR] 서로 다른 3개의 숫자를 입력해주세요.");
+			throw new IllegalArgumentException(message.ERROR_INPUT_LENGTH);
 	}
 
 	private void validateNotStartZero(List<Character> numbers) {
 		if (numbers.get(0) == '0')
-			throw new IllegalArgumentException("[ERROR] 서로 다른 3개의 숫자를 입력해주세요.");
+			throw new IllegalArgumentException(message.ERROR_INPUT_START_ZERO);
 	}
 
 	private void validateNonDuplicate(List<Character> numbers) {
 		Set<Character> nonDuplicateNumbers = new HashSet<>(numbers);
 		if (nonDuplicateNumbers.size() != BALLS_COUNT)
-			throw new IllegalArgumentException("[ERROR] 서로 다른 3개의 숫자를 입력해주세요.");
+			throw new IllegalArgumentException(message.ERROR_INPUT_HAS_DUPLICATE_VALUE);
 	}
 }

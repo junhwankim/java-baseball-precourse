@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.config.message;
+
 public class BallCount {
 	private final int strike;
 	private final int ball;
@@ -64,13 +66,13 @@ public class BallCount {
 	@Override
 	public String toString() {
 		if (isNothing())
-			return "낫싱";
+			return message.HINT_NOTHING;
 		if (isOnlyStrike())
-			return String.format("%d스트라이크", strike);
+			return String.format(message.HINT_STRIKE, strike);
 		if (isOnlyBall())
-			return String.format("%d볼", ball);
+			return String.format(message.HINT_BALL, ball);
 
-		return String.format("%d스트라이크 %d볼", strike, ball);
+		return String.format(message.HIND_STRIKE_WITH_BALL, strike, ball);
 	}
 
 	private boolean isOnlyBall() {

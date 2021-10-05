@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.config.message;
 import baseball.domain.Computer;
 import baseball.domain.Game;
 import baseball.view.InputView;
@@ -42,6 +43,6 @@ public class GameController {
 			outputView.printMessage(game.checkInputNumber(userNumber));
 		} while (!game.isFinished());
 
-		outputView.printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 끝");
+		outputView.printMessage(message.GAME_END);
 	}
 }
